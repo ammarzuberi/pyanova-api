@@ -18,7 +18,7 @@ To use pyanova, you will have to find your cooker ID. This can be easily found i
 
 On the profile page, click the settings button (top right of the page, cog icon) and choose "Cooker Details."
 
-![Screenshot of Cooker Details page](https://i.imgur.com/mEcrKPa.jpg)
+![Screenshot of Cooker Details page](https://i.imgur.com/mEcrKPa.jpg =530x)
 
 ## Usage
 TODO
