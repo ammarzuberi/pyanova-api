@@ -88,6 +88,8 @@ All the available state variables are:
 
 These state variables can be accessed like so:
 ```python
+cooker.update_state()
+
 wifi_ssid = cooker.wifi_ssid
 water_temp = cooker.water_temp
 ```
