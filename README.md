@@ -70,6 +70,7 @@ Before checking the values of state variables, always make sure they are the mos
 
 All the available state variables are:
 | Variable | Type | Description |
+| --- | --- | --- |
 | `job_status` | str | The status of the current job, for example, `PREHEATING`. |
 | `job_time_remaining` | int | The number of seconds remaining in the job. |
 | `heater_duty_cycle` | float | The heater's percentage duty cycle. |
@@ -84,7 +85,7 @@ All the available state variables are:
 | `triac_temp` | float | The triac's (like a relay) temperature in Celcius. |
 | `water_temp` | float | The water's temperature in Celcius. |
 
-These can be accessed like so:
+These state variables can be accessed like so:
 ```python
 wifi_ssid = cooker.wifi_ssid
 water_temp = cooker.water_temp
