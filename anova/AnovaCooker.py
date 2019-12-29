@@ -50,7 +50,7 @@ class AnovaCooker(object):
 
 	def update_state(self):
 		"""Get the device state and update local variables."""
-		device_state = self._get_raw_state()
+		device_state = self.__get_raw_state()
 
 		self.cook_time = int(device_state.get('job').get('cook-time-seconds'))
 		self.cook = False if device_state.get('job').get('mode') == 'IDLE' else True
@@ -76,7 +76,7 @@ class AnovaCooker(object):
 		self.water_temp = float(device_state.get('temperature-info').get('water-temperature'))
 
 
-	def _get_raw_state(self):
+	def __get_raw_state(self):
 		"""Get raw device state from the Anova API. This does not require authentication."""
 		device_state_request = requests.get('https://anovaculinary.io/devices/' + self.device_id + '/states/?limit=1&max-age=10s')
 		if device_state_request.status_code != 200:
