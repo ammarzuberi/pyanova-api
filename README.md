@@ -69,21 +69,21 @@ In addition to the four state variables that can be modified, there are multiple
 Before checking the values of state variables, always make sure they are the most current by calling `cooker.update_state()`. Calling `update_state()` after modifying one of the mutable variables but before calling `save()` will cause the changes to be overwritten with the values from the API.
 
 All the available state variables are:
-| Variable | Type | Description |
-| --- | --- | --- |
-| `job_status` | str | The status of the current job, for example, `PREHEATING`. |
-| `job_time_remaining` | int | The number of seconds remaining in the job. |
-| `heater_duty_cycle` | float | The heater's percentage duty cycle. |
-| `motor_duty_cycle` | float | The motor's percentage duty cycle. |
-| `wifi_connected` | bool | The cooker's WiFi connection status. |
-| `wifi_ssid` | str | The SSID of the network the cooker is connected to. |
-| `device_safe` | bool | Is the device is safe to operate? |
-| `water_leak` | bool | Is there a water leak? |
-| `water_level_critical` | bool | Is the water level too low for operation? |
-| `water_level_low` | bool | Is the water level low? |
-| `heater_temp` | float | The heater's temperature in Celcius. |
-| `triac_temp` | float | The triac's (like a relay) temperature in Celcius. |
-| `water_temp` | float | The water's temperature in Celcius. |
+Variable | Type | Description
+--- | --- | ---
+`job_status` | str | The status of the current job, for example, `PREHEATING`.
+`job_time_remaining` | int | The number of seconds remaining in the job.
+`heater_duty_cycle` | float | The heater's percentage duty cycle.
+`motor_duty_cycle` | float | The motor's percentage duty cycle.
+`wifi_connected` | bool | The cooker's WiFi connection status.
+`wifi_ssid` | str | The SSID of the network the cooker is connected to.
+`device_safe` | bool | Is the device is safe to operate?
+`water_leak` | bool | Is there a water leak?
+`water_level_critical` | bool | Is the water level too low for operation?
+`water_level_low` | bool | Is the water level low?
+`heater_temp` | float | The heater's temperature in Celcius.
+`triac_temp` | float | The triac's (like a relay) temperature in Celcius.
+`water_temp` | float | The water's temperature in Celcius.
 
 These state variables can be accessed like so:
 ```python
