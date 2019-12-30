@@ -4,6 +4,12 @@ A Python 3 library for programmatically accessing WiFi-enabled Anova sous vide c
 **NOTE**: This library uses the Anova REST API and has been tested with the Anova Precision Cooker Pro. Make sure your Anova cooker supports WiFi and is already connected. `pyanova-api` does not support communication over Bluetooth.
 
 ## Installation
+`pyanova-api` can be installed from either PyPi or can be installed manually by cloning the GitHub repository.
+
+### TL;DR installation
+```pip install pyanova-api```
+
+### Manual installation
 First, clone the GitHub repository:
 ```git clone https://github.com/ammarzuberi/pyanova-api.git```
 
