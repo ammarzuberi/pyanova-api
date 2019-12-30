@@ -1,22 +1,22 @@
-# pyanova
+# pyanova-api
 A Python 3 library for programmatically accessing WiFi-enabled Anova sous vide cookers through the Anova API.
 
-**NOTE**: This library uses the Anova REST API and has been tested with the Anova Precision Cooker Pro. Make sure your Anova cooker supports WiFi and is already connected.
+**NOTE**: This library uses the Anova REST API and has been tested with the Anova Precision Cooker Pro. Make sure your Anova cooker supports WiFi and is already connected. `pyanova-api` does not support communication over Bluetooth.
 
 ## Installation
 First, clone the GitHub repository:
-```git clone https://github.com/ammarzuberi/pyanova.git```
+```git clone https://github.com/ammarzuberi/pyanova-api.git```
 
-Enter the newly created `pyanova` directory and run:
+Enter the newly created `pyanova-api` directory and run:
 ```pip install .```
 
-This should install pyanova on your system. You can use it in your own Python scripts like so:
+This should install `pyanova-api` on your system. You can use it in your own Python scripts like so:
 ```python
 import anova
 ```
 
 ## Cooker ID
-You will need your cooker ID to use pyanova. This can be easily found in the Anova app when your cooker is connected to WiFi.
+You will need your cooker ID to use `pyanova-api`. This can be easily found in the Anova app when your cooker is connected to WiFi.
 
 On the profile page, click the settings button (top right of the page, cog icon) and choose "Cooker Details."
 
@@ -40,7 +40,7 @@ There are four state variables that can be modified and pushed to the cooker:
 * Target temperature (in Celcius, `float`)
 * Temperature display unit (`C` or `F`)
 
-Before setting the cooker state, you must authenticate with the Anova API. In the current version of `pyanova`, only email/password authentication is supported. You can authenticate yourself in `pyanova` like so:
+Before setting the cooker state, you must authenticate with the Anova API. In the current version of `pyanova-api`, only email/password authentication is supported. You can authenticate yourself in `pyanova-api` like so:
 ```python
 cooker.authenticate('your email address goes here', 'your password goes here')
 ``` 
