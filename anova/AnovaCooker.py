@@ -78,7 +78,7 @@ class AnovaCooker(object):
 
 	def __get_raw_state(self):
 		"""Get raw device state from the Anova API. This does not require authentication."""
-		device_state_request = requests.get('https://anovaculinary.io/devices/' + self.device_id + '/states/?limit=1&max-age=10s')
+		device_state_request = requests.get('https://anovaculinary.io/devices/{}/states/?limit=1&max-age=10s'.format(self.device_id))
 		if device_state_request.status_code != 200:
 			raise Exception('Error connecting to Anova')
 
@@ -100,7 +100,7 @@ class AnovaCooker(object):
 			'returnSecureToken': True
 		}
 
-		firebase_req = requests.post('https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=' + ANOVA_FIREBASE_KEY, json = firebase_req_data)
+		firebase_req = requests.post('https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key={}'.format(ANOVA_FIREBASE_KEY), json = firebase_req_data)
 		firebase_id_token = firebase_req.json().get('idToken')
 
 		if not firebase_id_token:
@@ -149,7 +149,7 @@ class AnovaCooker(object):
 			'temperature-unit': self.temp_display_unit
 		}
 
-		anova_req = requests.put('https://anovaculinary.io/devices/' + self.device_id + '/current-job', json = anova_req_data, headers = anova_req_headers)
+		anova_req = requests.put('https://anovaculinary.io/devices/{}/current-job'.format(self.device_id), json = anova_req_data, headers = anova_req_headers)
 		if anova_req.status_code != 200:
 			raise Exception('An unexpected error occurred')
 
