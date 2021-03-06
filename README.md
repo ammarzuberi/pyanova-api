@@ -1,3 +1,5 @@
+# This package is not actively maintained. Use at your own risk.
+
 # pyanova-api
 A Python 3 library for programmatically accessing WiFi-enabled Anova sous vide cookers through the Anova API.
 
