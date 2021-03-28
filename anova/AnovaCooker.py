@@ -80,11 +80,11 @@ class AnovaCooker(object):
 		"""Get raw device state from the Anova API. This does not require authentication."""
 		device_state_request = requests.get('https://anovaculinary.io/devices/{}/states/?limit=1&max-age=10s'.format(self.device_id))
 		if device_state_request.status_code != 200:
-			raise Exception('Error connecting to Anova')
+			raise ConnectionError('Error connecting to Anova')
 
 		device_state_body = device_state_request.json()
 		if len(device_state_body) == 0:
-			raise Exception('Invalid device ID')
+			raise InvalidDeviceID('Invalid device ID')
 
 		return device_state_body[0].get('body')
 		
@@ -111,7 +111,7 @@ class AnovaCooker(object):
 		jwt = anova_auth_req.json().get('jwt') # Looks like this JWT is valid for an entire year...
 
 		if not jwt:
-			raise Exception('Could not authenticate with Anova')
+			raise AuthenticationError('Could not authenticate with Anova')
 
 		# Set JWT local variable
 		self._jwt = jwt
@@ -129,11 +129,13 @@ class AnovaCooker(object):
 
 		# Validate temperature unit
 		if self.temp_display_unit not in ['F', 'C']:
-			raise Exception('Invalid temperature unit - only F or C are supported')
+			raise InvalidTemperature('Invalid temperature unit - only F or C are supported')
 
 		# Validate cook time and target temperature
-		if type(self.cook_time) != int or type(self.target_temp) != float:
-			raise Exception('Invalid cook time or target temperature')
+		if type(self.cook_time) != int:
+			raise InvalidCooktime('Invalid cook time')
+		if type(self.target_temp) != float:
+			raise InvalidTargetTemperature('Invalid target temperature')
 
 		# Now prepare and send the request
 		anova_req_headers = {
@@ -160,3 +162,15 @@ class AnovaCooker(object):
 
 
 
+class InvalidTemperature(Exception):
+	pass
+class InvalidCooktime(Exception):
+	pass
+class InvalidTargetTemperature(Exception):
+	pass
+class InvalidDeviceID(Exception):
+	pass
+class ConnectionError(Exception):
+	pass
+class AuthenticationError(Exception):
+	pass
